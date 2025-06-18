@@ -105,4 +105,33 @@ for roi_ct=1:length(roi_name)
     fprintf(['Done for: ' roi_name{roi_ct} '(' num2str(roi_ct) ')\n']);
 end  %-- end of for roi_ct
 
+% Statistical testing
+clear temp
+phase_ct=1; % phase_ct=2;
+for roi_ct=1:length(roi_idx)
+    temp{roi_ct} = same_diff{roi_ct,phase_ct};
+    [h,p,ci,stats] = ttest(temp{roi_ct});
+    fprintf([roi_name{roi_ct} ': t = ' num2str(stats.tstat) ', p = ' num2str(p) '\n']);
+end
+
 % Plot results
+figure;
+mean = cellfun(@nanmean,temp);
+err = cellfun(@(x) nanstd(x)/sqrt(length(x)), temp);
+err = err.*1.96;
+b = errorbar(mean,err);
+b(1).FaceColor = 'flat';
+b(1).FaceColor = [0.9 0.5 0.5]; % phase_ct=1;
+b(1).FaceColor = [0.8 0.6 0.9]; % phase_ct=2;
+b(1).BarWidth = 0.6;
+b.LineStyle = 'none';
+b.CapSize = 10;
+b.LineWidth = 2;
+yline(0, 'Linewidth', 2);
+
+set(gca,'FontName','Arial','FontSize',10,'fontweight','bold','linewidth',2, 'box','off');
+set(gca, 'xtick', 1:5, 'xticklabel', {' ',' '}, 'FontSize', 15);
+set(gcf,'Position', [100 100 900 250]);
+
+
+
