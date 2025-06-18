@@ -4,7 +4,7 @@
 Hello!
 This repository contains codes used to collect data for the following paper:
 
-Kim, J. S., Seol, J. M., Lee, C. H., Lee, I., Lee, S. A. (submitted) Complementary and opposing roles of the human perirhinal and entorhinal cortex during the retrieval of multiple object-place associations.
+Kim, J. S., Seol, J. M., Lee, C. H., Lee, I., Lee, S. A. (submitted) Complementary and opposing roles of the human perirhinal and entorhinal cortex in successful retrieval of hippocampal episodic memory.
 
 All scripts are written by J.S. Kim
 
