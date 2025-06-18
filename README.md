@@ -21,6 +21,5 @@ The scripts here are based on Matlab r2021b.
 ## Neural
 *These scripts were used for neural analyses.
 
-- `OPPA_0_Preprocessing.m`
 - `OPPA_1_context_reinstatement.m`
 - `OPPA_2_integration_index.m`
