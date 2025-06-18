@@ -29,7 +29,7 @@ for sbj_ct=1:length(sbjlist)
             for trial_ct=1:length(cond_match)
                 final_degree_pattern{roi_ct,sbj_ct}{1}(:,trial_ct) = Extract_ROI_Pattern(roi_file, [sbj_dir '\' cond_match(trial_ct).name '\beta_0001.nii']);
                 final_degree_pattern{roi_ct,sbj_ct}{2}(:,trial_ct) = Extract_ROI_Pattern(roi_file, [sbj_dir '\' oprp_match(trial_ct).name '\beta_0001.nii']);
-            end  %-- end of for trial_ct
+            end
 
             % Nav
             final_degree_pattern{roi_ct,sbj_ct}{3} = [];
@@ -37,7 +37,7 @@ for sbj_ct=1:length(sbjlist)
             for trial_ct=1:length(smp_match)
                 final_degree_pattern{roi_ct,sbj_ct}{3}(:,trial_ct) = Extract_ROI_Pattern(roi_file, [sbj_dir '\' smp_match(trial_ct).name '\beta_0001.nii']);
             end
-        end  %-- end of for roi_ct
+        end
     end
 end
 
@@ -56,9 +56,9 @@ for roi_ct=1:length(roi_name)
                 end  %-- end of for ret_ct
             end  %-- end of for phase_ct
         end
-    end  %-- end of for sbj_ct
+    end
     fprintf(['Done for: ' roi_name{roi_ct} '(' num2str(roi_ct) ')\n']);
-end  %-- end of for roi_ct
+end
 
 % Context Reinstatement calculation
 for roi_ct=1:length(roi_name)
@@ -91,19 +91,19 @@ for roi_ct=1:length(roi_name)
                         else
                             continue
                         end
-                    end  %-- end of for y
-                end  %-- end of for x
+                    end
+                end
 
                 sbj_roi_pattern = ret_trial_corr{roi_ct,sbj_ct}{phase_ct};
                 same{roi_ct,phase_ct}(sbj_ct,1) = nanmean(sbj_roi_pattern(same_log));
                 diff{roi_ct,phase_ct}(sbj_ct,1) = nanmean(sbj_roi_pattern(diff_log));
                 same_diff{roi_ct,phase_ct}(sbj_ct,1) = same{roi_ct,phase_ct}(sbj_ct,1) - diff{roi_ct,phase_ct}(sbj_ct,1);
 
-            end  %-- end of for phase_ct
+            end
         end
     end  %-- end of for sbj_ct
     fprintf(['Done for: ' roi_name{roi_ct} '(' num2str(roi_ct) ')\n']);
-end  %-- end of for roi_ct
+end
 
 % Statistical testing
 clear temp
